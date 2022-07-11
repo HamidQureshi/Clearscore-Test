@@ -1,8 +1,9 @@
-package com.hamid.test
+package com.clearscore.test
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -10,16 +11,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.hamid.test.ui.theme.TestTheme
+import com.clearscore.test.data.dataSource.FetchScoreDataSourceImpl
+import com.clearscore.test.ui.ScoreViewModel
+import com.clearscore.test.ui.theme.TestTheme
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-//    @Inject lateinit var analytics: AnalyticsAdapter
+    private val viewModel: ScoreViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        viewModel.getCreditScore()
+
         setContent {
             TestTheme {
                 // A surface container using the 'background' color from the theme

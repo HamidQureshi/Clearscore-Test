@@ -1,4 +1,4 @@
-package com.hamid.test.ui.theme
+package com.clearscore.test.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

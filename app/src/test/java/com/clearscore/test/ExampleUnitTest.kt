@@ -1,4 +1,4 @@
-package com.hamid.test
+package com.clearscore.test
 
 import org.junit.Test
 

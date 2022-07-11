@@ -1,4 +1,4 @@
-package com.hamid.test.ui.theme
+package com.clearscore.test.ui.theme
 
 import android.app.Activity
 import android.os.Build
