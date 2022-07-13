@@ -1,6 +1,5 @@
 package com.clearscore.test.data.repository
 
-import android.util.Log
 import com.clearscore.test.data.dataSource.FetchScoreDataSource
 import com.clearscore.test.data.repository.model.ScoreDataResult
 import javax.inject.Inject
@@ -10,11 +9,14 @@ internal class ScoreDataRepositoryImpl @Inject constructor(
 ) : ScoreDataRepository {
     override suspend fun getScore(): ScoreDataResult =
         dataSource.getScoreDetails().let {
-            Log.e("----->", "${it.body()}")
             if (it.isSuccessful) {
-                ScoreDataResult.Success(it.body()?.accountIDVStatus ?: "")
+                ScoreDataResult.Success(
+                    accountIDVStatus = it.body()?.accountIDVStatus ?: "",
+                    score = it.body()?.creditReportInfo?.score ?: 0,
+                    maxScore = it.body()?.creditReportInfo?.maxScoreValue ?: 0
+                )
             } else {
                 ScoreDataResult.Failure
             }
-        } ?: ScoreDataResult.Failure
+        }
 }

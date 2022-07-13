@@ -11,36 +11,49 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ScoreViewModel @Inject constructor(
+internal class ScoreViewModel @Inject constructor(
     private val repository: ScoreDataRepository
 ) : ViewModel() {
 
-    private val _state = MutableLiveData<State>()
+    private val _state = MutableLiveData<UIState>()
 
-    val state: LiveData<State>
+    val state: LiveData<UIState>
         get() = _state
 
-//    init {
-//        getCreditScore()
-//    }
+    init {
+        getCreditScore()
+    }
 
-    fun getCreditScore() = viewModelScope.launch {
-        _state.postValue(State.Loading)
+    fun onAction(creditScoreIntent: CreditScoreIntent) {
+        when (creditScoreIntent) {
+            is CreditScoreIntent.RefreshCreditScore -> getCreditScore()
+        }
+    }
 
-        when (repository.getScore()) {
+    private fun getCreditScore() = viewModelScope.launch {
+        _state.postValue(UIState.Loading)
+
+        when (val result = repository.getScore()) {
             ScoreDataResult.Failure -> {
-                _state.postValue(State.Error)
+                _state.postValue(UIState.Error)
             }
             is ScoreDataResult.Success -> {
-                _state.postValue(State.Success)
+                _state.postValue(
+                    UIState.Success(
+                        score = result.score,
+                        maxScore = result.maxScore,
+                        creditRingProgress = calculateCreditRingProgress(
+                            result.score,
+                            result.maxScore
+                        )
+                    )
+                )
             }
         }
     }
 
-}
+    private fun calculateCreditRingProgress(score: Int, maxScore: Int): Float {
+        return score.toFloat() / maxScore
+    }
 
-sealed class State {
-    object Loading : State()
-    object Success : State()
-    object Error : State()
 }
