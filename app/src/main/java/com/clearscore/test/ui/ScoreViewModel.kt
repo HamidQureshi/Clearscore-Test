@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.clearscore.test.data.repository.ScoreDataRepository
 import com.clearscore.test.data.repository.model.ScoreDataResult
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -30,12 +31,15 @@ internal class ScoreViewModel @Inject constructor(
         }
     }
 
-    private fun getCreditScore() = viewModelScope.launch {
+    private fun getCreditScore() = viewModelScope.launch(Dispatchers.IO) {
         _state.postValue(UIState.Loading)
 
         when (val result = repository.getScore()) {
-            ScoreDataResult.Failure -> {
+            ScoreDataResult.ServerError -> {
                 _state.postValue(UIState.Error)
+            }
+            ScoreDataResult.NoInternet -> {
+                _state.postValue(UIState.NoInternet)
             }
             is ScoreDataResult.Success -> {
                 _state.postValue(

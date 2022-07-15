@@ -8,4 +8,5 @@ sealed class UIState {
         val creditRingProgress: Float
     ): UIState()
     object Error : UIState()
+    object NoInternet : UIState()
 }

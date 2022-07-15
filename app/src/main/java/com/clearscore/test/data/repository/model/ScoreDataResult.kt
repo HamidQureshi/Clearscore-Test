@@ -7,5 +7,6 @@ sealed class ScoreDataResult {
         val maxScore: Int
     ) : ScoreDataResult()
 
-    object Failure : ScoreDataResult()
+    object ServerError : ScoreDataResult()
+    object NoInternet : ScoreDataResult()
 }
