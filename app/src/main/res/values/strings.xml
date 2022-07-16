@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Clear Score Test</string>
+    <string name="title_activity_main">Credit Score Activity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="credit_score_fragment_label">Credit Score</string>
+    <string name="credit_score_details_fragment_label">Credit Score Details</string>
+
+    <!-- Credit Score Fragment -->
+    <string name="text_credit_score_line_1">Your credit score is</string>
+    <string name="text_credit_score_line_2">out of %1$s</string>
+    <string name="text_retry_button_server_error">Something went wrong! Retry?</string>
+    <string name="text_retry_button_no_internet">Check your internet and Retry?</string>
+
+    <!-- Credit Score Details Fragment -->
+<!--    <string name="text_credit_score_line_1">Your credit score is</string>-->
+<!--    <string name="text_credit_score_line_2">out of %1$s</string>-->
+
 </resources>

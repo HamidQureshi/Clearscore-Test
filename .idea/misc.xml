@@ -10,6 +10,16 @@
         <entry key="../../../../../layout/compose-model-1657730220518.xml" value="0.6852159468438538" />
         <entry key="../../../../../layout/compose-model-1657739167511.xml" value="0.686046511627907" />
         <entry key="../../../../../layout/compose-model-1657739655571.xml" value="1.0" />
+        <entry key="../../../../../layout/compose-model-1657742789831.xml" value="0.6555555555555556" />
+        <entry key="../../../../../layout/compose-model-1657742975299.xml" value="0.625" />
+        <entry key="../../../../../layout/compose-model-1657897843192.xml" value="0.16659698996655517" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2895" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2895" />
+        <entry key="app/src/main/res/drawable/outline_ring_credit_ring.xml" value="0.2895" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.17447916666666666" />
+        <entry key="app/src/main/res/layout/fragment_credit_score_details.xml" value="0.21458333333333332" />
+        <entry key="app/src/main/res/layout/fragment_first.xml" value="0.5" />
       </map>
     </option>
   </component>

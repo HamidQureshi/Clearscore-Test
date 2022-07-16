@@ -5,7 +5,7 @@ sealed class UIState {
     data class Success(
         val score: Int,
         val maxScore: Int,
-        val creditRingProgress: Float
+        val creditRingProgress: Int
     ): UIState()
     object Error : UIState()
     object NoInternet : UIState()

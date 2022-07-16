@@ -56,8 +56,8 @@ internal class ScoreViewModel @Inject constructor(
         }
     }
 
-    private fun calculateCreditRingProgress(score: Int, maxScore: Int): Float {
-        return score.toFloat() / maxScore
+    private fun calculateCreditRingProgress(score: Int, maxScore: Int): Int {
+        return (score *100) / maxScore
     }
 
 }

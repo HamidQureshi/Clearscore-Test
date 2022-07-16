@@ -47,7 +47,7 @@ internal class ScoreViewModelTest {
                     UIState.Success(
                         score = 514,
                         maxScore = 700,
-                        creditRingProgress = 0.7342857f
+                        creditRingProgress = 73
                     )
                 )
             }
@@ -106,7 +106,7 @@ internal class ScoreViewModelTest {
                     UIState.Success(
                         score = 514,
                         maxScore = 700,
-                        creditRingProgress = 0.7342857f
+                        creditRingProgress = 73
                     )
                 )
                 observer.onChanged(UIState.Loading)
@@ -114,7 +114,7 @@ internal class ScoreViewModelTest {
                     UIState.Success(
                         score = 514,
                         maxScore = 700,
-                        creditRingProgress = 0.7342857f
+                        creditRingProgress = 73
                     )
                 )
             }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/CreditScoreFragment">
+
+    <fragment
+        android:id="@+id/CreditScoreFragment"
+        android:name="com.clearscore.test.CreditScoreFragment"
+        android:label="@string/credit_score_fragment_label"
+        tools:layout="@layout/fragment_credit_score">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/CreditScoreDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/CreditScoreDetailsFragment"
+        android:name="com.clearscore.test.CreditScoreDetailsFragment"
+        android:label="@string/credit_score_details_fragment_label"
+        tools:layout="@layout/fragment_credit_score_details">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/CreditScoreFragment" />
+    </fragment>
+</navigation>
