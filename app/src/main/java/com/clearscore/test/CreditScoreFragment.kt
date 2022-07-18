@@ -13,24 +13,21 @@ import com.clearscore.test.databinding.FragmentCreditScoreBinding
 import com.clearscore.test.ui.CreditScoreIntent
 import com.clearscore.test.ui.ScoreViewModel
 import com.clearscore.test.ui.UIState
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CreditScoreFragment : Fragment() {
 
-    private var _binding: FragmentCreditScoreBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!! // maybe inject it?
-//    by viewBinding(FragmentSubscribeDowngradeBinding::bind)
+    private lateinit var binding: FragmentCreditScoreBinding
 
     private val viewModel: ScoreViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        _binding = FragmentCreditScoreBinding.inflate(inflater, container, false)
+        binding = FragmentCreditScoreBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -43,7 +40,7 @@ class CreditScoreFragment : Fragment() {
 
     private fun setupClickListeners() {
         binding.textCreditScoreLine2.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            findNavController().navigate(R.id.action_CreditScoreFragment_to_CreditScoreDetailsFragment)
         }
         binding.retryButton.setOnClickListener {
             viewModel.onAction(CreditScoreIntent.RefreshCreditScore)
@@ -95,10 +92,5 @@ class CreditScoreFragment : Fragment() {
         binding.textCreditScoreLine3.isVisible = false
         binding.creditScoreRing.isVisible = false
         binding.retryButton.isVisible = false
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

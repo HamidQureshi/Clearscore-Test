@@ -12,14 +12,12 @@ import androidx.navigation.fragment.findNavController
 import com.clearscore.test.databinding.FragmentCreditScoreDetailsBinding
 import com.clearscore.test.ui.ScoreViewModel
 import com.clearscore.test.ui.UIState
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CreditScoreDetailsFragment : Fragment() {
 
-    private var _binding: FragmentCreditScoreDetailsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentCreditScoreDetailsBinding
 
     private val viewModel: ScoreViewModel by activityViewModels()
 
@@ -28,7 +26,7 @@ class CreditScoreDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentCreditScoreDetailsBinding.inflate(inflater, container, false)
+        binding = FragmentCreditScoreDetailsBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -42,7 +40,7 @@ class CreditScoreDetailsFragment : Fragment() {
 
     private fun setupClickListeners() {
         binding.textviewSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            findNavController().navigate(R.id.action_CreditScoreDetailsFragment_to_CreditScoreFragment)
         }
         // handle system back press closes app
     }
@@ -64,8 +62,4 @@ class CreditScoreDetailsFragment : Fragment() {
         viewModel.state.observe(viewLifecycleOwner, observer)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
