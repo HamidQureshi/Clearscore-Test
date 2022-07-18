@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_credit_score">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            android:id="@+id/action_CreditScoreFragment_to_CreditScoreDetailsFragment"
             app:destination="@id/CreditScoreDetailsFragment" />
     </fragment>
     <fragment
@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_credit_score_details">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            android:id="@+id/action_CreditScoreDetailsFragment_to_CreditScoreFragment"
             app:destination="@id/CreditScoreFragment" />
     </fragment>
 </navigation>
