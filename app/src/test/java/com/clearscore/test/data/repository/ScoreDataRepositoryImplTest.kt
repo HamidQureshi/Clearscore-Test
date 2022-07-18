@@ -32,7 +32,8 @@ internal class ScoreDataRepositoryImplTest {
             //GIVEN
             coEvery { dataSource.getScoreDetails() } returns Response.success(
                 ScoreDetailsResponse(
-                    accountIDVStatus = "123",
+                    accountIDVStatus = "PASS",
+                    dashboardStatus = "PASS",
                     creditReportInfo = ScoreDetailsResponse.CreditReportInfo(
                         score = 123,
                         maxScoreValue = 500,
@@ -47,7 +48,8 @@ internal class ScoreDataRepositoryImplTest {
             //THEN
             assertEquals(
                 ScoreDataResult.Success(
-                    accountIDVStatus = "123",
+                    accountIDVStatus = "PASS",
+                    dashboardStatus = "PASS",
                     score = 123,
                     maxScore = 500
                 ), actual
@@ -68,22 +70,6 @@ internal class ScoreDataRepositoryImplTest {
                 ScoreDataResult.ServerError, actual
             )
         }
-
-//    @Test
-//    fun `GIVEN get score api is called WHEN server returns error THEN failure should be returned`() =
-//        runBlocking {
-//            //GIVEN
-//            val body = ResponseBody.Companion.
-//            coEvery { dataSource.getScoreDetails() } returns Response.error(403, body.toResponseBody())
-//
-//            //WHEN
-//            val actual = repository.getScore()
-//
-//            //THEN
-//            assertEquals(
-//                ScoreDataResult.ServerError, actual
-//            )
-//        }
 
     @Test
     fun `GIVEN get score api is called WHEN there is no internet THEN no internet should be returned`() =

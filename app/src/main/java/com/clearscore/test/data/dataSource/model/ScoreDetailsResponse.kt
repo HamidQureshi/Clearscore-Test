@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class ScoreDetailsResponse(
     @SerializedName("accountIDVStatus") val accountIDVStatus: String,
+    @SerializedName("dashboardStatus") val dashboardStatus: String,
     @SerializedName("creditReportInfo") val creditReportInfo: CreditReportInfo
 ) {
     data class CreditReportInfo(

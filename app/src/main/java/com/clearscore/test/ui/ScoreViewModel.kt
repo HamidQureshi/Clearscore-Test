@@ -44,6 +44,8 @@ internal class ScoreViewModel @Inject constructor(
             is ScoreDataResult.Success -> {
                 _state.postValue(
                     UIState.Success(
+                        accountIDVStatus = result.accountIDVStatus,
+                        dashboardStatus = result.dashboardStatus,
                         score = result.score,
                         maxScore = result.maxScore,
                         creditRingProgress = calculateCreditRingProgress(

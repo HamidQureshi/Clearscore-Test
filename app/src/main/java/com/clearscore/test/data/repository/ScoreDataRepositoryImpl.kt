@@ -15,6 +15,7 @@ internal class ScoreDataRepositoryImpl @Inject constructor(
             success = { response ->
                 ScoreDataResult.Success(
                     accountIDVStatus = response.accountIDVStatus,
+                    dashboardStatus = response.dashboardStatus,
                     score = response.creditReportInfo.score,
                     maxScore = response.creditReportInfo.maxScoreValue
                 )

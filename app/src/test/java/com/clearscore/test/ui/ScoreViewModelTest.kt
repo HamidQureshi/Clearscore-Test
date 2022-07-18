@@ -32,7 +32,8 @@ internal class ScoreViewModelTest {
         runBlocking {
             //GIVEN
             coEvery { repository.getScore() } returns ScoreDataResult.Success(
-                accountIDVStatus = "123",
+                accountIDVStatus = "PASS",
+                dashboardStatus = "PASS",
                 score = 514,
                 maxScore = 700
             )
@@ -45,6 +46,8 @@ internal class ScoreViewModelTest {
                 observer.onChanged(UIState.Loading)
                 observer.onChanged(
                     UIState.Success(
+                        accountIDVStatus = "PASS",
+                        dashboardStatus = "PASS",
                         score = 514,
                         maxScore = 700,
                         creditRingProgress = 73
@@ -90,7 +93,8 @@ internal class ScoreViewModelTest {
         runBlocking {
             //GIVEN
             coEvery { repository.getScore() } returns ScoreDataResult.Success(
-                accountIDVStatus = "123",
+                accountIDVStatus = "PASS",
+                dashboardStatus = "PASS",
                 score = 514,
                 maxScore = 700
             )
@@ -104,6 +108,8 @@ internal class ScoreViewModelTest {
                 observer.onChanged(UIState.Loading)
                 observer.onChanged(
                     UIState.Success(
+                        accountIDVStatus = "PASS",
+                        dashboardStatus = "PASS",
                         score = 514,
                         maxScore = 700,
                         creditRingProgress = 73
@@ -112,6 +118,8 @@ internal class ScoreViewModelTest {
                 observer.onChanged(UIState.Loading)
                 observer.onChanged(
                     UIState.Success(
+                        accountIDVStatus = "PASS",
+                        dashboardStatus = "PASS",
                         score = 514,
                         maxScore = 700,
                         creditRingProgress = 73
@@ -138,23 +146,4 @@ internal class ScoreViewModelTest {
                 observer.onChanged(UIState.Error)
             }
         }
-
-//    @Test
-//    fun `GIVEN action is Refresh Credit Score WHEN result is No Internet THEN livedata should have no internet state`() =
-//        runBlocking {
-//            //GIVEN
-//            coEvery { repository.getScore() } returns ScoreDataResult.NoInternet
-//            setUp()
-//
-//            //WHEN
-//            viewModel.onAction(CreditScoreIntent.RefreshCreditScore)
-//
-//            //THEN
-//            verifySequence {
-//                observer.onChanged(UIState.Loading)
-//                observer.onChanged(UIState.NoInternet)
-//                observer.onChanged(UIState.Loading)
-//                observer.onChanged(UIState.NoInternet)
-//            }
-//        }
 }

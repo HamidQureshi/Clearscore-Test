@@ -24,7 +24,7 @@ class CreditScoreDetailsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentCreditScoreDetailsBinding.inflate(inflater, container, false)
         return binding.root
@@ -35,14 +35,6 @@ class CreditScoreDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         observeState()
-        setupClickListeners()
-    }
-
-    private fun setupClickListeners() {
-        binding.textviewSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_CreditScoreDetailsFragment_to_CreditScoreFragment)
-        }
-        // handle system back press closes app
     }
 
     private fun observeState() {
@@ -51,7 +43,8 @@ class CreditScoreDetailsFragment : Fragment() {
             Log.e("----->", "Frag 2 $state")
             when (state) {
                 is UIState.Success -> {
-                    //setup views here
+                    binding.accountStatus.text = getString(R.string.text_account_status, state.accountIDVStatus)
+                    binding.dashboardStatus.text = getString(R.string.text_dashboard_status, state.dashboardStatus)
                 }
                 else -> {
                     // Since VM is shared and this screen is navigated on Success state we should not have any other state here.
