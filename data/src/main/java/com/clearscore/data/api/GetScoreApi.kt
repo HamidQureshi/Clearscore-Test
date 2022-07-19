@@ -1,6 +1,6 @@
-package com.clearscore.test.data.api
+package com.clearscore.data.api
 
-import com.clearscore.test.data.dataSource.model.ScoreDetailsResponse
+import com.clearscore.data.dataSource.model.ScoreDetailsResponse
 import retrofit2.Response
 import retrofit2.http.GET
 

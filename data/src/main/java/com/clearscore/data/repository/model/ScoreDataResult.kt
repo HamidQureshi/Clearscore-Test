@@ -1,4 +1,4 @@
-package com.clearscore.test.data.repository.model
+package com.clearscore.data.repository.model
 
 sealed class ScoreDataResult {
     data class Success(

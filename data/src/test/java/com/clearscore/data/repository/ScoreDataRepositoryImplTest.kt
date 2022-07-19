@@ -1,8 +1,6 @@
-package com.clearscore.test.data.repository
+package com.clearscore.data.repository
 
-import com.clearscore.test.data.dataSource.FetchScoreDataSource
-import com.clearscore.test.data.dataSource.model.ScoreDetailsResponse
-import com.clearscore.test.data.repository.model.ScoreDataResult
+import com.clearscore.data.dataSource.FetchScoreDataSource
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
@@ -31,10 +29,10 @@ internal class ScoreDataRepositoryImplTest {
         runBlocking {
             //GIVEN
             coEvery { dataSource.getScoreDetails() } returns Response.success(
-                ScoreDetailsResponse(
+                com.clearscore.data.dataSource.model.ScoreDetailsResponse(
                     accountIDVStatus = "PASS",
                     dashboardStatus = "PASS",
-                    creditReportInfo = ScoreDetailsResponse.CreditReportInfo(
+                    creditReportInfo = com.clearscore.data.dataSource.model.ScoreDetailsResponse.CreditReportInfo(
                         score = 123,
                         maxScoreValue = 500,
                         scoreBand = 3
@@ -47,7 +45,7 @@ internal class ScoreDataRepositoryImplTest {
 
             //THEN
             assertEquals(
-                ScoreDataResult.Success(
+                com.clearscore.data.repository.model.ScoreDataResult.Success(
                     accountIDVStatus = "PASS",
                     dashboardStatus = "PASS",
                     score = 123,
@@ -67,7 +65,7 @@ internal class ScoreDataRepositoryImplTest {
 
             //THEN
             assertEquals(
-                ScoreDataResult.ServerError, actual
+                com.clearscore.data.repository.model.ScoreDataResult.ServerError, actual
             )
         }
 
@@ -82,7 +80,7 @@ internal class ScoreDataRepositoryImplTest {
 
             //THEN
             assertEquals(
-                ScoreDataResult.NoInternet, actual
+                com.clearscore.data.repository.model.ScoreDataResult.NoInternet, actual
             )
         }
 

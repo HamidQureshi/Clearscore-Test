@@ -1,6 +1,6 @@
-package com.clearscore.test.data.dataSource
+package com.clearscore.data.dataSource
 
-import com.clearscore.test.data.dataSource.model.ScoreDetailsResponse
+import com.clearscore.data.dataSource.model.ScoreDetailsResponse
 import retrofit2.Response
 
 interface FetchScoreDataSource {

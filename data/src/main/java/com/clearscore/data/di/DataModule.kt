@@ -1,12 +1,11 @@
-package com.clearscore.test.di
+package com.clearscore.data.di
 
-import com.clearscore.test.BuildConfig
-import com.clearscore.test.config.Endpoints.BASE_URL
-import com.clearscore.test.data.api.GetScoreApi
-import com.clearscore.test.data.dataSource.FetchScoreDataSource
-import com.clearscore.test.data.dataSource.FetchScoreDataSourceImpl
-import com.clearscore.test.data.repository.ScoreDataRepository
-import com.clearscore.test.data.repository.ScoreDataRepositoryImpl
+import com.clearscore.data.api.GetScoreApi
+import com.clearscore.data.config.Endpoints.BASE_URL
+import com.clearscore.data.dataSource.FetchScoreDataSource
+import com.clearscore.data.dataSource.FetchScoreDataSourceImpl
+import com.clearscore.data.repository.ScoreDataRepository
+import com.clearscore.data.repository.ScoreDataRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,17 +25,10 @@ object DataModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(): OkHttpClient = if (BuildConfig.DEBUG) {
-        val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-        OkHttpClient.Builder()
-            .addInterceptor(loggingInterceptor)
-            .build()
-    } else {
-        OkHttpClient
-            .Builder()
-            .build()
-    }
+    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
+        .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+        .build()
+
 
     @Singleton
     @Provides

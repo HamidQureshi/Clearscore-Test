@@ -1,7 +1,7 @@
-package com.clearscore.test.data.dataSource
+package com.clearscore.data.dataSource
 
-import com.clearscore.test.data.api.GetScoreApi
-import com.clearscore.test.data.dataSource.model.ScoreDetailsResponse
+import com.clearscore.data.api.GetScoreApi
+import com.clearscore.data.dataSource.model.ScoreDetailsResponse
 import retrofit2.Response
 import javax.inject.Inject
 

@@ -1,4 +1,4 @@
-package com.clearscore.test.data.dataSource.model
+package com.clearscore.data.dataSource.model
 
 import com.google.gson.annotations.SerializedName
 

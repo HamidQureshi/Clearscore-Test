@@ -2,8 +2,7 @@ package com.clearscore.test.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.clearscore.test.data.repository.ScoreDataRepositoryImpl
-import com.clearscore.test.data.repository.model.ScoreDataResult
+import com.clearscore.data.repository.ScoreDataRepository
 import io.mockk.*
 import kotlinx.coroutines.runBlocking
 import org.junit.Rule
@@ -18,7 +17,7 @@ internal class ScoreViewModelTest {
     private val observer = mockk<Observer<UIState>> { every { onChanged(any()) } just Runs }
 
     @Mock
-    private var repository: ScoreDataRepositoryImpl = mockk()
+    private var repository: ScoreDataRepository = mockk()
 
     private lateinit var viewModel: ScoreViewModel
 
@@ -31,7 +30,7 @@ internal class ScoreViewModelTest {
     fun `GIVEN Repo Layer returns Success WHEN viewModel is created THEN livedata should have success state`() =
         runBlocking {
             //GIVEN
-            coEvery { repository.getScore() } returns ScoreDataResult.Success(
+            coEvery { repository.getScore() } returns com.clearscore.data.repository.model.ScoreDataResult.Success(
                 accountIDVStatus = "PASS",
                 dashboardStatus = "PASS",
                 score = 514,
@@ -60,7 +59,7 @@ internal class ScoreViewModelTest {
     fun `GIVEN Repo Layer returns Server Error WHEN viewModel is created THEN livedata should have error state`() =
         runBlocking {
             //GIVEN
-            coEvery { repository.getScore() } returns ScoreDataResult.ServerError
+            coEvery { repository.getScore() } returns com.clearscore.data.repository.model.ScoreDataResult.ServerError
 
             //WHEN
             setUp()
@@ -76,7 +75,7 @@ internal class ScoreViewModelTest {
     fun `GIVEN Repo Layer returns No Internet WHEN viewModel is created THEN livedata should have no internet state`() =
         runBlocking {
             //GIVEN
-            coEvery { repository.getScore() } returns ScoreDataResult.NoInternet
+            coEvery { repository.getScore() } returns com.clearscore.data.repository.model.ScoreDataResult.NoInternet
 
             //WHEN
             setUp()
@@ -92,7 +91,7 @@ internal class ScoreViewModelTest {
     fun `GIVEN action is Refresh Credit Score WHEN result is success THEN livedata should have success state`() =
         runBlocking {
             //GIVEN
-            coEvery { repository.getScore() } returns ScoreDataResult.Success(
+            coEvery { repository.getScore() } returns com.clearscore.data.repository.model.ScoreDataResult.Success(
                 accountIDVStatus = "PASS",
                 dashboardStatus = "PASS",
                 score = 514,
@@ -132,7 +131,7 @@ internal class ScoreViewModelTest {
     fun `GIVEN action is Refresh Credit Score WHEN result is Server Error THEN livedata should have error state`() =
         runBlocking {
             //GIVEN
-            coEvery { repository.getScore() } returns ScoreDataResult.ServerError
+            coEvery { repository.getScore() } returns com.clearscore.data.repository.model.ScoreDataResult.ServerError
             setUp()
 
             //WHEN

@@ -1,7 +1,7 @@
-package com.clearscore.test.data.repository
+package com.clearscore.data.repository
 
-import com.clearscore.test.data.dataSource.FetchScoreDataSource
-import com.clearscore.test.data.repository.model.ScoreDataResult
+import com.clearscore.data.dataSource.FetchScoreDataSource
+import com.clearscore.data.repository.model.ScoreDataResult
 import retrofit2.Response
 import java.io.IOException
 import javax.inject.Inject

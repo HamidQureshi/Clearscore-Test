@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.clearscore.test.data.repository.ScoreDataRepository
-import com.clearscore.test.data.repository.model.ScoreDataResult
+import com.clearscore.data.repository.ScoreDataRepository
+import com.clearscore.data.repository.model.ScoreDataResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 internal class ScoreViewModel @Inject constructor(
-    private val repository: ScoreDataRepository
+    private val repository: com.clearscore.data.repository.ScoreDataRepository
 ) : ViewModel() {
 
     private val _state = MutableLiveData<UIState>()
@@ -35,13 +35,13 @@ internal class ScoreViewModel @Inject constructor(
         _state.postValue(UIState.Loading)
 
         when (val result = repository.getScore()) {
-            ScoreDataResult.ServerError -> {
+            com.clearscore.data.repository.model.ScoreDataResult.ServerError -> {
                 _state.postValue(UIState.Error)
             }
-            ScoreDataResult.NoInternet -> {
+            com.clearscore.data.repository.model.ScoreDataResult.NoInternet -> {
                 _state.postValue(UIState.NoInternet)
             }
-            is ScoreDataResult.Success -> {
+            is com.clearscore.data.repository.model.ScoreDataResult.Success -> {
                 _state.postValue(
                     UIState.Success(
                         accountIDVStatus = result.accountIDVStatus,

@@ -19,9 +19,8 @@ class MainActivityTest {
     @get:Rule
     var activityScenarioRule = activityScenarioRule<MainActivity>()
 
-
     @Test
-    fun testNavigationToCreditScoreFragment() {
+    fun testViewsVisibilityOnNavigation() {
 
         // VERIFY
         onView(withId(R.id.fragmentCreditScore)).check(matches(isDisplayed()))
