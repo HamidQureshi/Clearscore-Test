@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="credit_ring_indicator_size">250dp</dimen>
+    <dimen name="track_corner_radius">3dp</dimen>
+    <dimen name="credit_ring_track_thickness">4dp</dimen>
+    <dimen name="score_description_size">20sp</dimen>
+    <dimen name="score_size">60sp</dimen>
+    <dimen name="margin_score_details">20dp</dimen>
+    <dimen name="credit_outer_ring_stroke">2dp</dimen>
+</resources>

@@ -1,14 +1,12 @@
 package com.clearscore.test
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import com.clearscore.test.databinding.FragmentCreditScoreDetailsBinding
 import com.clearscore.test.ui.ScoreViewModel
 import com.clearscore.test.ui.UIState
@@ -40,11 +38,12 @@ class CreditScoreDetailsFragment : Fragment() {
     private fun observeState() {
 
         val observer = Observer<UIState> { state ->
-            Log.e("----->", "Frag 2 $state")
             when (state) {
                 is UIState.Success -> {
-                    binding.accountStatus.text = getString(R.string.text_account_status, state.accountIDVStatus)
-                    binding.dashboardStatus.text = getString(R.string.text_dashboard_status, state.dashboardStatus)
+                    binding.accountStatus.text =
+                        getString(R.string.text_account_status, state.accountIDVStatus)
+                    binding.dashboardStatus.text =
+                        getString(R.string.text_dashboard_status, state.dashboardStatus)
                 }
                 else -> {
                     // Since VM is shared and this screen is navigated on Success state we should not have any other state here.

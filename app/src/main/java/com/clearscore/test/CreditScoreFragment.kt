@@ -50,24 +50,20 @@ class CreditScoreFragment : Fragment() {
     private fun observeState() {
 
         val observer = Observer<UIState> { state ->
-            //reset state
             resetViewsVisibility()
             when (state) {
                 UIState.Loading -> {
                     binding.progressBar.isVisible = true
                 }
                 is UIState.Success -> {
-                    binding.textCreditScoreLine1.isVisible = true
+                    binding.groupSuccessStateViews.isVisible = true
                     with(binding.textCreditScoreLine2) {
-                        isVisible = true
                         text = state.score.toString()
                     }
                     with(binding.textCreditScoreLine3) {
-                        isVisible = true
                         text = getString(R.string.text_credit_score_line_2, state.maxScore)
                     }
                     with(binding.creditScoreRing) {
-                        isVisible = true
                         setProgress(state.creditRingProgress, true)
                     }
                 }
@@ -87,10 +83,7 @@ class CreditScoreFragment : Fragment() {
 
     private fun resetViewsVisibility() {
         binding.progressBar.isVisible = false
-        binding.textCreditScoreLine1.isVisible = false
-        binding.textCreditScoreLine2.isVisible = false
-        binding.textCreditScoreLine3.isVisible = false
-        binding.creditScoreRing.isVisible = false
+        binding.groupSuccessStateViews.isVisible = false
         binding.retryButton.isVisible = false
     }
 }
