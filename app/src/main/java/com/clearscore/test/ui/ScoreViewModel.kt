@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 internal class ScoreViewModel @Inject constructor(
-    private val repository: com.clearscore.data.repository.ScoreDataRepository
+    private val repository: ScoreDataRepository
 ) : ViewModel() {
 
     private val _state = MutableLiveData<UIState>()
@@ -35,13 +35,13 @@ internal class ScoreViewModel @Inject constructor(
         _state.postValue(UIState.Loading)
 
         when (val result = repository.getScore()) {
-            com.clearscore.data.repository.model.ScoreDataResult.ServerError -> {
+            ScoreDataResult.ServerError -> {
                 _state.postValue(UIState.Error)
             }
-            com.clearscore.data.repository.model.ScoreDataResult.NoInternet -> {
+            ScoreDataResult.NoInternet -> {
                 _state.postValue(UIState.NoInternet)
             }
-            is com.clearscore.data.repository.model.ScoreDataResult.Success -> {
+            is ScoreDataResult.Success -> {
                 _state.postValue(
                     UIState.Success(
                         accountIDVStatus = result.accountIDVStatus,
