@@ -22,3 +22,6 @@ Testing
 * Junit
 * Mockito
 * Espresso
+
+Improvement
+* Integration Testing using Fake
